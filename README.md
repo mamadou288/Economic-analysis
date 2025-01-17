@@ -13,7 +13,6 @@ Les analyses incluent :
 ## Contenu
 - `data/`: Données brutes.
 - `notebooks/`: Analyses exploratoires.
-- `scripts/`: Scripts Python.
 - `requirements.txt`: Dépendances.
 
 ## Installation
