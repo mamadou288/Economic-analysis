@@ -1,0 +1,556 @@
+/* Variables pour le thème sombre */
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --bg-tertiary: #21262d;
+    --accent-color: #d1d5db;
+    --accent-color-secondary: #9ca3af;
+    --accent-color-dark: #6b7280;
+    --accent-color-light: #e5e7eb;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+    --card-hover-transform: translateY(-5px);
+    --gradient-primary: linear-gradient(135deg, #4b5563, #6b7280);
+    --gradient-secondary: linear-gradient(135deg, #6b7280, #9ca3af);
+    --gradient-header: linear-gradient(135deg, #111827 0%, #1f2937 50%, #374151 100%);
+    --gradient-button: linear-gradient(45deg, #4b5563, #6b7280);
+    --gradient-card: linear-gradient(180deg, 
+        rgba(22, 27, 34, 0.95) 0%,
+        rgba(33, 38, 45, 0.98) 100%);
+    --card-gap: 25px;
+    --section-gap: 35px;
+    --content-max-width: 1400px;
+    --card-border-radius: 20px;
+    --card-border: 1px solid rgba(209, 213, 219, 0.2);
+    --glow-color: rgba(209, 213, 219, 0.15);
+}
+
+/* Container principal */
+.main-container {
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding: 0 var(--card-gap);
+}
+
+/* Style de base */
+.main {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+    from { transform: translateX(-20px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* Styles des boutons */
+.stButton>button {
+    background: var(--gradient-button);
+    color: var(--text-primary);
+    border-radius: 8px;
+    border: none;
+    padding: 12px 24px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.stButton>button:hover {
+    transform: var(--card-hover-transform);
+    box-shadow: 0 4px 12px rgba(209, 213, 219, 0.3);
+    background: linear-gradient(45deg, #6b7280, #9ca3af);
+}
+
+/* Styles des sélecteurs */
+.stSelectbox, .stMultiSelect {
+    background: var(--gradient-card);
+    border-radius: 8px;
+    color: var(--text-primary);
+    border: var(--card-border);
+    transition: all 0.3s ease;
+}
+
+.stSelectbox:hover, .stMultiSelect:hover {
+    border-color: var(--accent-color);
+    box-shadow: 0 2px 8px rgba(209, 213, 219, 0.2);
+}
+
+/* Style des cartes */
+.card, .graph-container, .data-table {
+    background: rgba(22, 27, 34, 0.7);
+    padding: 30px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: var(--section-gap);
+    box-shadow: 
+        0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.card::after, .graph-container::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.02) 40%,
+        rgba(255, 255, 255, 0.04) 60%,
+        transparent 80%
+    );
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.card:hover::after, .graph-container:hover::after {
+    transform: translateX(100%);
+}
+
+.card:hover, .graph-container:hover, .data-table:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+        0 10px 20px -5px rgba(0, 0, 0, 0.2),
+        0 4px 6px -2px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.07);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.card h3, .graph-container h3, .data-table h3 {
+    color: var(--text-primary);
+    font-size: 1.5em;
+    margin: -30px -30px 20px -30px;
+    padding: 20px 30px;
+    background: linear-gradient(
+        90deg,
+        rgba(33, 38, 45, 0.95) 0%,
+        rgba(22, 27, 34, 0.95) 100%
+    );
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+.card h3 span, .graph-container h3 span {
+    opacity: 0.9;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover h3 span, .graph-container:hover h3 span {
+    opacity: 1;
+}
+
+.card p {
+    color: var(--text-secondary);
+    font-size: 1.1em;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0 10px;
+    text-align: justify;
+}
+
+/* Style de l'en-tête */
+.header {
+    background: var(--gradient-header);
+    padding: 35px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: var(--section-gap);
+    animation: slideIn 0.5s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, 
+        rgba(209, 213, 219, 0.1) 0%, 
+        rgba(156, 163, 175, 0.05) 50%, 
+        transparent 100%);
+    pointer-events: none;
+}
+
+.header h1 {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3),
+                 0 0 20px rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.header h1 span {
+    font-size: 1.2em;
+    margin-right: 15px;
+    vertical-align: middle;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+/* Style de la sidebar */
+.sidebar-header {
+    background: var(--gradient-primary);
+    padding: 20px;
+    border-radius: var(--card-border-radius);
+    margin-bottom: var(--section-gap);
+    animation: slideIn 0.5s ease-out;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.sidebar-header h2 {
+    color: var(--text-primary);
+    text-align: center;
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* Style des boîtes d'observation */
+.observation-box {
+    background: rgba(33, 38, 45, 0.5);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
+}
+
+.observation-box::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.02) 40%,
+        rgba(255, 255, 255, 0.04) 60%,
+        transparent 80%
+    );
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.observation-box:hover::after {
+    transform: translateX(100%);
+}
+
+.observation-box:hover {
+    transform: translateX(5px);
+    background: rgba(33, 38, 45, 0.8);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.observation-box h4 {
+    color: var(--text-primary);
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Style des points clés */
+.observation-box ul {
+    color: var(--text-secondary);
+    list-style-type: none;
+    padding-left: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.observation-box ul li {
+    margin: 0;
+    padding: 12px 20px 12px 45px;
+    position: relative;
+    line-height: 1.6;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.observation-box ul li:before {
+    content: "";
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.observation-box ul li:after {
+    content: "";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.observation-box ul li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateX(5px);
+    border-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+.observation-box ul li:hover:before {
+    transform: translateY(-50%) scale(1.2);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.observation-box ul li:hover:after {
+    transform: translateY(-50%) scale(1.2);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Style des messages d'erreur */
+.error-message {
+    background-color: rgba(239, 68, 68, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px 0;
+    border-left: 4px solid #ef4444;
+    animation: pulse 2s infinite;
+}
+
+.error-message h3 {
+    color: #ef4444;
+}
+
+/* Style des descriptions */
+.graph-description, .table-description {
+    background: rgba(33, 38, 45, 0.5);
+    color: var(--text-secondary);
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin: 15px 0 25px 0;
+    padding: 15px 20px;
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 12px 12px 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(5px);
+    position: relative;
+    overflow: hidden;
+}
+
+.graph-description::after, .table-description::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        120deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.02) 40%,
+        rgba(255, 255, 255, 0.04) 60%,
+        transparent 80%
+    );
+    transition: transform 0.3s ease;
+    pointer-events: none;
+}
+
+.graph-description:hover::after, .table-description:hover::after {
+    transform: translateX(100%);
+}
+
+.graph-description:hover, .table-description:hover {
+    background: rgba(33, 38, 45, 0.8);
+    border-left-color: var(--accent-color);
+    transform: translateX(5px);
+    box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Style des éléments Streamlit */
+.stDataFrame {
+    background: linear-gradient(180deg, 
+        rgba(33, 38, 45, 0.8) 0%,
+        rgba(22, 27, 34, 0.9) 100%);
+    border-radius: var(--card-border-radius);
+    padding: 15px;
+    border: var(--card-border);
+    backdrop-filter: blur(10px);
+}
+
+.streamlit-expanderHeader {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Personnalisation des scrollbars */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--accent-color-dark);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-color);
+}
+
+/* Style des tooltips des graphiques */
+.plotly .tooltip {
+    background-color: var(--bg-secondary) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--text-primary) !important;
+}
+
+/* Animations pour les transitions */
+.stMarkdown, .stText {
+    transition: all 0.3s ease;
+}
+
+/* Style des liens */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+h1 {
+    color: #1E88E5;
+    text-align: center;
+    padding: 20px;
+}
+
+h2 {
+    color: #333;
+    padding: 10px 0;
+}
+
+h3 {
+    color: #666;
+}
+
+.stMarkdown {
+    padding: 10px 0;
+}
+
+/* Custom Colors for Graphs */
+.custom-colors {
+    --color-primary: #1E88E5;
+    --color-secondary: #4CAF50;
+    --color-error: #c62828;
+    --color-background: #f5f5f5;
+    --color-card: #ffffff;
+    --color-text: #333333;
+    --color-text-light: #666666;
+}
+
+/* Style des emojis */
+h1 span.emoji, h2 span.emoji, h3 span.emoji, h4 span.emoji {
+    font-size: 1.2em;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Animation des emojis au survol */
+h3:hover span.emoji {
+    animation: bounce 0.5s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+/* Grille pour les graphiques */
+.graph-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--card-gap);
+    margin-bottom: var(--section-gap);
+}
+
+/* Style des colonnes */
+.column {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* Ajustement des marges pour les éléments Streamlit */
+.element-container {
+    margin-bottom: var(--card-gap) !important;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    :root {
+        --card-gap: 15px;
+        --section-gap: 25px;
+    }
+    
+    .card, .graph-container, .data-table {
+        padding: 20px;
+    }
+    
+    .header {
+        padding: 25px;
+    }
+    
+    .graph-grid {
+        grid-template-columns: 1fr;
+    }
+} 
