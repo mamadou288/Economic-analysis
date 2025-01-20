@@ -15,8 +15,14 @@ st.set_page_config(
 
 # Définition des couleurs personnalisées pour les graphiques
 THEME_COLORS = [
-    '#d1d5db', '#9ca3af', '#6b7280', '#4b5563',
-    '#e5e7eb', '#374151', '#f3f4f6', '#1f2937'
+    '#ffd700',  # Or - pour les économies majeures
+    '#c0c0c0',  # Argent - pour les économies développées
+    '#cd7f32',  # Bronze - pour les économies émergentes
+    '#a855f7',  # Violet - pour les économies en développement rapide
+    '#f97316',  # Orange - pour les économies dynamiques
+    '#06b6d4',  # Cyan - pour les économies stables
+    '#ec4899',  # Rose - pour les économies en transition
+    '#84cc16'   # Vert lime - pour les économies en croissance
 ]
 
 BACKGROUND_COLOR = '#0d1117'
@@ -42,10 +48,10 @@ PLOT_TEMPLATE.layout.yaxis = dict(
 
 # Configuration des légendes des graphiques
 LEGEND_STYLE = dict(
-    bgcolor='rgba(13, 17, 23, 0.8)',
-    bordercolor='rgba(209, 213, 219, 0.3)',
+    bgcolor='rgba(13, 17, 23, 0.9)',
+    bordercolor='rgba(255, 215, 0, 0.3)',  # Bordure dorée subtile
     borderwidth=1,
-    font=dict(color=TEXT_COLOR)
+    font=dict(color=TEXT_COLOR, size=12)
 )
 
 # Chargement du CSS externe
